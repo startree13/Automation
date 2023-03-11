@@ -60,3 +60,15 @@ Feature: An example
     And I click on the Next Button
     Then Contact Information page opens
 
+    Scenario: Positive #9
+      Given I am on the main page
+      When I click on Instructors button
+      Then the Instructors section will be shown
+
+    Scenario: Positive #10
+      Given I am on the main page
+      When I click on Instructors button
+      And I click on Twitter button from John Doe
+      Then Twitter page will open
+
+

@@ -121,6 +121,23 @@ public class StepDefinitions {
     public void contact_information_page_opens() {
         Assert.assertEquals(enrollmentPage.getContactInformationHeader(), "Contact information"); }
 
+    @When("I click on Instructors button")
+    public void i_click_on_instructors_button()
+    {mainPage.clickOnInstructorsButton(); }
+
+    @Then("the Instructors section will be shown")
+    public void the_instructors_section_will_be_shown() {
+        Assert.assertEquals(mainPage.getOurInstructorsHeader(), "Our Instructors"); }
+
+    @And("I click on Twitter button from John Doe")
+    public void i_click_on_twitter_button_from_john_doe() {
+        Utils.scrollToElement(driver, mainPage.getJohnDoeTitle());
+        mainPage.clickOnTwitterButtonOfJohnDoe(); }
+
+    @Then("Twitter page will open")
+    public void twitter_page_will_open() {
+        Assert.assertEquals("https://twitter.com/", driver.getCurrentUrl()); }
+
 
         @After
         public void cleanUp() {

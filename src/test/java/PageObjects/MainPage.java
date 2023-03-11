@@ -31,6 +31,18 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"learn-fundamentals\"]/div/div/div[2]/h2")
     private WebElement LearnFundamentalsHeader;
 
+    @FindBy(xpath = "//*[@id=\"navmenu\"]/ul/li[3]/a")
+    private WebElement InstructorsButton;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/h2")
+    private WebElement OurInstructorsHeader;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[1]/div/div/h3")
+    private WebElement JohnDoeTitle;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[1]/div/div/a[1]/i")
+    private WebElement TwitterButtonOfJohnDoe;
+
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -40,6 +52,8 @@ public class MainPage {
     public void clickOnSubmitButton() {
         this.SubmitButton.click();
     }
+
+    public void clickOnTwitterButtonOfJohnDoe() { this.TwitterButtonOfJohnDoe.click(); }
 
     public void writeEmailToEmailField(String email) {
         this.emailField.sendKeys(email);
@@ -60,4 +74,10 @@ public class MainPage {
     public String getFundamentalsText() {
         return this.LearnFundamentalsHeader.getText();
     }
+
+    public void clickOnInstructorsButton() {this.InstructorsButton.click(); }
+
+    public String getOurInstructorsHeader() { return this.OurInstructorsHeader.getText();}
+
+    public WebElement getJohnDoeTitle() {return this.JohnDoeTitle; }
 }
