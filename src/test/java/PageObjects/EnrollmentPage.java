@@ -37,11 +37,10 @@ public class EnrollmentPage {
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/button")
     private WebElement NextButton;
 
-    @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/div[2]/div")
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/div[1]/div")
     private WebElement ErrorMessage;
 
-    public String getErrorMessageText() {
-        return this.ErrorMessage.getText();}
+    public String getErrorMessageText() { return this.ErrorMessage.getText();}
     public void clickOnFirstNameField() {
         this.FirstNameField.click();
     }

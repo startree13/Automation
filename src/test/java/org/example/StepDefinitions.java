@@ -178,6 +178,11 @@ public class StepDefinitions {
     public void ANewPageWithSeleniumHeaderOpens() {
         Assert.assertEquals(mainPage.getSeleniumHeaderText(), "Learn Selenium"); }
 
+    @Then("an error message appears")
+    public void AnErrorMessageAppears() {
+        Assert.assertEquals(enrollmentPage.getErrorMessageText(),"Your first name is required");
+    }
+
 
     @After
         public void cleanUp() {

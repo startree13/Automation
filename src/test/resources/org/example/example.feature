@@ -94,5 +94,10 @@ Feature: An example
          When I click on the Read More button from Selenium section
          Then A new page with Selenium header opens
 
+       Scenario: Positive #15
+         Given I am on the Enrollment Page
+         When I click on the Next Button
+         Then an error message appears
+
 
 
