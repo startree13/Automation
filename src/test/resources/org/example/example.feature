@@ -20,7 +20,7 @@ Feature: An example
     Scenario: Positive #3
       Given I am on the main page
       When I scroll to the Read More from Virtual
-      Then A new page with Virtual header opens
+      Then the "Virtual" page opens
 
   Scenario: Positive #4
      Given I am on the main page
@@ -70,5 +70,29 @@ Feature: An example
       When I click on Instructors button
       And I click on Twitter button from John Doe
       Then Twitter page will open
+
+   Scenario: Positive #11
+      Given I am on the main page
+      When I click on Instructors button
+      And I click on Facebook button from Steve Smith
+      Then Facebook page will open
+
+     Scenario: Positive #12
+       Given I am on the main page
+       When I click on Instructors button
+       And I click on Instagram button from Jane Doe
+       Then Instagram page opens
+
+       Scenario: Positive #13
+         Given I am on the main page
+         When I click on Instructors button
+         And I click on LikedIn button from Sara Smith
+         Then LinkedIn page opens
+
+       Scenario: Negative #14
+         Given I am on the main page
+         When I click on the Read More button from Selenium section
+         Then A new page with Selenium header opens
+
 
 

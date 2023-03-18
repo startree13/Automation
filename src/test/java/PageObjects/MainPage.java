@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.PrimitiveIterator;
+
 public class MainPage {
 
     @FindBy(xpath = "/html/body/section[2]/div/div/div/input")
@@ -43,11 +45,37 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[1]/div/div/a[1]/i")
     private WebElement TwitterButtonOfJohnDoe;
 
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[3]/div/div/h3")
+    private WebElement SteveSmithTitle;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[2]/div/div/h3")
+    private WebElement JaneDoeTitle;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[4]/div/div/h3")
+    private WebElement SaraSmithTitle;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[3]/div/div/a[2]/i")
+    private WebElement FacebookButtonOfSteveSmith;
+
+    @FindBy(xpath ="//*[@id=\"instructors\"]/div/div/div[2]/div/div/a[4]/i")
+    private WebElement InstagramButtonOfJaneDoe;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[4]/div/div/a[3]/i")
+    private WebElement LinkedInButtonOfSaraSmith;
+
+    @FindBy(xpath = "//*[@id=\"learn-selenium\"]/div/div/div[1]/a/i")
+    private WebElement SeleniumReadMoreButton;
+
+    @FindBy(xpath = "//*[@id=\"learn-selenium\"]/div/div/div[1]/h2")
+    private WebElement LearnSeleniumHeader;
+
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
+    public void clickOnInstagramButtonOfJaneDoe() {this.InstagramButtonOfJaneDoe.click(); }
+    public void clickOnLinkedInButtonOfSaraSmith() {this.LinkedInButtonOfSaraSmith.click(); }
     public void clickOnWhatYouLlLearn() {this.WhatYouLlLearn.click(); }
     public void clickOnSubmitButton() {
         this.SubmitButton.click();
@@ -63,6 +91,8 @@ public class MainPage {
 
     public void clickOnStartTheEnrollment() {this.StartTheEnrollment.click();}
 
+    public void clickOnSeleniumReadMoreButton() {this.SeleniumReadMoreButton.click();}
+
     public WebElement getEmailField() {
         return this.emailField;
     }
@@ -75,9 +105,19 @@ public class MainPage {
         return this.LearnFundamentalsHeader.getText();
     }
 
+    public WebElement getSeleniumHeaderText() { return this.LearnSeleniumHeader; }
+
     public void clickOnInstructorsButton() {this.InstructorsButton.click(); }
 
     public String getOurInstructorsHeader() { return this.OurInstructorsHeader.getText();}
 
     public WebElement getJohnDoeTitle() {return this.JohnDoeTitle; }
+
+    public WebElement getSteveSmithTitle() {return this.SteveSmithTitle; }
+
+    public WebElement getJaneDoeTitle() {return this.JaneDoeTitle; }
+
+    public WebElement getSaraSmithTitle() {return this.SaraSmithTitle; }
+
+    public void clickOnFacebookButtonOfSteveSmith() {this.FacebookButtonOfSteveSmith.click(); }
 }

@@ -52,10 +52,9 @@ public class StepDefinitions {
         mainPage.clickOnReadMoreButtonFromVirtual();
     }
 
-    @Then("A new page with Virtual header opens")
-    public void a_new_page_with_virtual_header_opens() {
-        driver.getTitle();
-    }
+    @Then("the {string} page opens")
+    public void the_page_opens(String string) {
+        Assert.assertEquals(driver.getTitle(), string);}
 
     @When("I click on What You'll Learn")
     public void clickOnWhatYouLlLearn() {
@@ -64,10 +63,13 @@ public class StepDefinitions {
 
     @Then("Learn the fundamentals will be shown")
     public void LearnTheFundamentalsWillBeShown() {
-        Assert.assertEquals(mainPage.getFundamentalsText(), "Learn The Fundamentals");
-    }
+        Assert.assertEquals(mainPage.getFundamentalsText(), "Learn The Fundamentals"); }
+
 
     @Then("the email field turns red")
+    public void the_email_field_turns_red() {
+        Assert.assertTrue(mainPage.getEmailField().getAttribute("class").contains("error"));
+    }
 
 
     @When("I click on Start The Enrollment")
@@ -138,8 +140,46 @@ public class StepDefinitions {
     public void twitter_page_will_open() {
         Assert.assertEquals("https://twitter.com/", driver.getCurrentUrl()); }
 
+    @When("I click on Facebook button from Steve Smith")
+    public void IClickOnFacebookButtonFromSteveSmith() {
+        Utils.scrollToElement(driver,mainPage.getSteveSmithTitle());
+        mainPage.clickOnFacebookButtonOfSteveSmith();
+    }
 
-        @After
+    @Then("Facebook page will open")
+    public void FacebookPageWillOpen() {
+        Assert.assertEquals("https://www.facebook.com/", driver.getCurrentUrl());
+    }
+
+    @When("I click on Instagram button from Jane Doe")
+    public void IClickOnInstagramButtonFromJaneDoe() {
+        Utils.scrollToElement(driver, mainPage.getJaneDoeTitle());
+        mainPage.clickOnInstagramButtonOfJaneDoe(); }
+
+    @Then("Instagram page opens")
+    public void InstagramPageOpens () {
+        Assert.assertEquals("https://www.instagram.com/", driver.getCurrentUrl()); }
+
+    @When("I click on LikedIn button from Sara Smith")
+    public void IClickOnLinkedInButtonFromSaraSmith() {
+        Utils.scrollToElement(driver, mainPage.getSaraSmithTitle());
+        mainPage.clickOnLinkedInButtonOfSaraSmith(); }
+
+    @Then("LinkedIn page opens")
+    public void LinkeedInPageOpens() {
+        Assert.assertEquals("https://www.linkedin.com/", driver.getCurrentUrl()); }
+
+    @When("I click on the Read More button from Selenium section")
+    public void IClickOnTheReadMoreButtonFromSeleniumSection() {
+        Utils.scrollToElement(driver, mainPage.getSeleniumHeaderText());
+        mainPage.clickOnSeleniumReadMoreButton(); }
+
+    @Then("A new page with Selenium header opens")
+    public void ANewPageWithSeleniumHeaderOpens() {
+        Assert.assertEquals(mainPage.getSeleniumHeaderText(), "Learn Selenium"); }
+
+
+    @After
         public void cleanUp() {
             driver.quit();
         }
