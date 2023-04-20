@@ -89,7 +89,7 @@ Feature: An example
          And I click on LikedIn button from Sara Smith
          Then LinkedIn page opens
 
-       Scenario: Negative #14
+       Scenario: Positive #14
          Given I am on the main page
          When I click on the Read More button from Selenium section
          Then A new page with Selenium header opens
@@ -98,6 +98,17 @@ Feature: An example
          Given I am on the Enrollment Page
          When I click on the Next Button
          Then an error message appears
+
+         Scenario: Positive #16
+           Given I am on Contact Information page
+           When I enter "bob@yahoo.com" in the email field
+           And I add "222563" in the phone field
+           And I enter "Spain" in the country field
+           And I enter "Alicante" in the city field
+           And I enter "002334" in the post code field
+           And I press on the Next button
+           Then a new page with Course Options opens
+
 
 
 

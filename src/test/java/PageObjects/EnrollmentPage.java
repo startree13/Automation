@@ -75,6 +75,14 @@ public class EnrollmentPage {
         this.NextButton.click();
     }
 
+    public void fillPersonalInformation() {
+        writeFirstNameToFirstNameField("Ben");
+        writeLastNameToLastNameField("Smith");
+        writeUsernameToUsernameField("bensmith01");
+        writePasswordToPasswordField("passw0rd");
+        writeConfirmPasswordToConfirmPasswordField("passw0rd");
+    }
+
 
 
 }

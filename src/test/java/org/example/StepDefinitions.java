@@ -1,5 +1,7 @@
 package org.example;
 
+import PageObjects.ContactInformation;
+import PageObjects.CourseOptionsPage;
 import PageObjects.EnrollmentPage;
 import PageObjects.MainPage;
 import io.cucumber.java.After;
@@ -17,11 +19,14 @@ public class StepDefinitions {
     private MainPage mainPage;
     private EnrollmentPage enrollmentPage;
 
+    private ContactInformation contactInformationPage;
+
 
     public StepDefinitions() {
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         enrollmentPage = new EnrollmentPage(driver);
+        contactInformationPage = new ContactInformation(driver);
     }
 
 
@@ -183,6 +188,47 @@ public class StepDefinitions {
         Assert.assertEquals(enrollmentPage.getErrorMessageText(),"Your first name is required");
     }
 
+    @Given("I am on Contact Information page")
+    public void IAmOnContactInformationPage() {
+        driver.get("file:///C:/Users/Zmeul/Desktop/GitHub/Testing-Env/routes/enrollment.html");
+        enrollmentPage.fillPersonalInformation();
+        Utils.scrollToElement(driver, enrollmentPage.getConfirmPassword());
+        enrollmentPage.clickOnTheNextButton();
+        Assert.assertEquals(contactInformationPage.getContactInformationHeader(), "Contact information");
+    }
+
+    @When("I enter {string} in the email field")
+    public void IEnter(String string) {
+        contactInformationPage.EnterEmail(string);
+    }
+    @And("I add {string} in the phone field")
+    public void I_Add_Phone(String string) {
+        contactInformationPage.EnterPhone(string);
+    }
+     @And("I enter {string} in the country field")
+     public void IEnterCountry(String string) {
+        contactInformationPage.EnterCountry(string);
+     }
+
+     @And("I enter {string} in the city field")
+     public void IEnterCity(String string) {
+        contactInformationPage.EnterCity(string);
+     }
+
+     @And("I enter {string} in the post code field")
+     public void IEnterPostCode(String string) {
+        contactInformationPage.EnterPostcode(string);
+    }
+     @And("I press on the Next button")
+    public void PressNextButton() {
+         Utils.scrollToElement(driver, contactInformationPage.getPostcodeHeader());
+         contactInformationPage.clickNextButton();}
+
+    @Then("a new page with Course Options opens")
+    public void ANewPageWIthCourseOptionsOpens() {
+        Assert.assertEquals(CourseOptionsPage.getCourseOptionsHeader(), "Course options");
+
+    }
 
     @After
         public void cleanUp() {
